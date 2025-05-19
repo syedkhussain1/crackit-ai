@@ -1,0 +1,82 @@
+[
+  {
+    "position": "Project Manager",
+    "company": "Viva",
+    "location": "Nanam",
+    "status": "interview",
+    "mode": "full-time",
+    "createdAt": "2025-03-02T09:17:18Z"
+  },
+  {
+    "position": "Web Coordinator",
+    "company": "Tagtune",
+    "location": "Murygino",
+    "status": "interview",
+    "mode": "part-time",
+    "createdAt": "2025-04-10T09:17:18Z"
+  },
+  {
+    "position": "Back End Developer",
+    "company": "Wordware",
+    "location": "Odivelas",
+    "status": "declined",
+    "mode": "full-time",
+    "createdAt": "2025-04-10T09:17:18Z"
+  },
+  {
+    "position": "Front End Developer",
+    "company": "Twiyo",
+    "location": "Dejen",
+    "status": "interview",
+    "mode": "full-time",
+    "createdAt": "2025-04-10T09:17:18Z"
+  },
+  {
+    "position": "Full Stack Developer",
+    "company": "Roomm",
+    "location": "Skinnskatteberg",
+    "status": "pending",
+    "mode": "full-time",
+    "createdAt": "2025-05-10T09:17:18Z"
+  },
+    {
+    "position": "Product Manager",
+    "company": "Viva",
+    "location": "Nanam",
+    "status": "interview",
+    "mode": "full-time",
+    "createdAt": "2025-03-02T09:17:18Z"
+  },
+  {
+    "position": "Web Coordinator expert",
+    "company": "Tagtune",
+    "location": "Murygino",
+    "status": "interview",
+    "mode": "part-time",
+    "createdAt": "2025-04-10T09:17:18Z"
+  },
+  {
+    "position": "Back End Developer Python",
+    "company": "Wordware",
+    "location": "Odivelas",
+    "status": "declined",
+    "mode": "full-time",
+    "createdAt": "2025-04-10T09:17:18Z"
+  },
+  {
+    "position": "Front End Developer Angular",
+    "company": "Twiyo",
+    "location": "Dejen",
+    "status": "interview",
+    "mode": "full-time",
+    "createdAt": "2025-04-10T09:17:18Z"
+  },
+  {
+    "position": "Full Stack Developer MERN",
+    "company": "Roomm",
+    "location": "Skinnskatteberg",
+    "status": "pending",
+    "mode": "full-time",
+    "createdAt": "2025-05-10T09:17:18Z"
+  }
+]
