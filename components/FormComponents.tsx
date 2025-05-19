@@ -14,11 +14,11 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from './ui/input';
-
+import { CreateAndEditJobType } from '@/utils/types';
 
 type CustomFormFieldProps = {
-  name: string;
-  control: Control<any>;
+  name: keyof CreateAndEditJobType;
+  control: Control<CreateAndEditJobType>;
 };
 
 export function CustomFormField({ name, control }: CustomFormFieldProps) {
@@ -40,8 +40,8 @@ export function CustomFormField({ name, control }: CustomFormFieldProps) {
 }
 
 type CustomFormSelectProps = {
-  name: string;
-  control: Control<any>;
+  name: keyof CreateAndEditJobType;
+  control: Control<CreateAndEditJobType>;
   items: string[];
   labelText?: string;
 };

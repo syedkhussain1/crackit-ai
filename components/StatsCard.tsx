@@ -15,15 +15,6 @@ type StatsCardsProps = {
 };
 
 function StatsCards({ title, value, icon, color = 'blue' }: StatsCardsProps) {
-  const getGradient = () => {
-    switch(color) {
-      case 'yellow': return 'from-yellow-500/10 to-transparent';
-      case 'blue': return 'from-blue-500/10 to-transparent';
-      case 'red': return 'from-red-500/10 to-transparent';
-      case 'green': return 'from-green-500/10 to-transparent';
-      default: return 'from-primary/10 to-transparent';
-    }
-  };
   
   const getTextColor = () => {
     switch(color) {

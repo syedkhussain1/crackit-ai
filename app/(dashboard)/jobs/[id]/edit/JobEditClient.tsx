@@ -1,6 +1,6 @@
 'use client';
 
-import { dehydrate, HydrationBoundary, QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { HydrationBoundary, QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import EditJobForm from '@/components/EditJobForm';
 
 export default function JobEditClient({ 

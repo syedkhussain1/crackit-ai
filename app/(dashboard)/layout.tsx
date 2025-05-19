@@ -5,8 +5,6 @@ import Sidebar from "@/components/Sidebar";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { PropsWithChildren } from "react";
-
 
 export default function DashboardLayout({
   children,

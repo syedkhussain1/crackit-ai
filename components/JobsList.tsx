@@ -4,7 +4,7 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { getAllJobsAction } from '@/utils/actions';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from './ui/button';
-import { ArrowLeft, ArrowRight, Loader2, RefreshCw } from 'lucide-react';
+import { ArrowLeft, ArrowRight, RefreshCw } from 'lucide-react';
 import { JobType } from '@/utils/types';
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';

@@ -1,13 +1,8 @@
 'use client';
 
-import React, { useState, useRef, useEffect, FC, memo } from 'react';
+import React, { useState, useEffect, FC, memo } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import ReactMarkdown, { Components, Options } from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
-import Image from 'next/image';
-import type { TextContent, TextItem } from 'pdfjs-dist/types/src/display/api';
 import { fetchOpenAIResponse } from '@/app/utils/fetchOpenAIResponse';
 import RequestForm from './components/RequestForm';
 import Chat from './components/Chat';
@@ -21,39 +16,6 @@ type Props = {
 
 type languageMap = {
   [key: string]: string | undefined;
-};
-
-type MarkdownRendererProps = {
-  children: string;
-};
-
-type Message = {
-  author: {
-    username: string;
-    id: number;
-    avatarUrl: string;
-  };
-  text: string;
-  type: string;
-  timestamp: number;
-};
-
-type aiMessage = {
-  role: 'user' | 'assistant' | 'system';
-  content: string;
-};
-
-// Constants
-const userAuthor = {
-  username: 'User',
-  id: 1,
-  avatarUrl: '/user-avatar.jpg',
-};
-
-const aiAuthor = {
-  username: 'Bob The Interviewer',
-  id: 2,
-  avatarUrl: '/bob.jpg',
 };
 
 export const programmingLanguages: languageMap = {
@@ -94,29 +56,6 @@ export const generateRandomString = (length: number, lowercase = false) => {
 
 // Components
 const CodeBlock: FC<Props> = memo(({ language, value }) => {
-  const downloadAsFile = () => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-    const fileExtension = programmingLanguages[language] || '.file';
-    const suggestedFileName = `file-${generateRandomString(3, true)}${fileExtension}`;
-    const fileName = window.prompt('Enter file name', suggestedFileName);
-
-    if (!fileName) {
-      return;
-    }
-
-    const blob = new Blob([value], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.download = fileName;
-    link.href = url;
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div className="relative w-full font-sans codeblock bg-zinc-950">
@@ -149,57 +88,7 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
   );
 });
 
-const MarkdownRenderer: FC<MarkdownRendererProps> = (props) => {
-  const components: Components = {
-    p({ children }) {
-      return <p className="mb-2 last:mb-0">{children}</p>;
-    },
-    code({ node, inline, className, children, ...props }: any) {
-      const childrenArray = React.Children.toArray(children);
-      if (childrenArray.length > 0) {
-        if (childrenArray[0] === "▍") {
-          return (
-            <span className="mt-1 cursor-default animate-pulse">▍</span>
-          );
-        }
-
-        if (typeof childrenArray[0] === 'string') {
-          childrenArray[0] = childrenArray[0].replace("`▍`", "▍");
-        }
-      }
-
-      const match = /language-(\w+)/.exec(className || "");
-
-      if (inline) {
-        return (
-          <code className={className} {...props}>
-            {children}
-          </code>
-        );
-      }
-
-      return (
-        <CodeBlock
-          key={Math.random()}
-          language={(match && match[1]) || ""}
-          value={String(children).replace(/\n$/, "")}
-          {...props}
-        />
-      );
-    },
-  };
-
-  return (
-    <div className="prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm, remarkMath]}
-        components={components}
-      >
-        {props.children}
-      </ReactMarkdown>
-    </div>
-  );
-};
+CodeBlock.displayName = 'CodeBlock';
 
 const InterviewGPT: React.FC = () => {
   const [showChat, setShowChat] = useState(false);
@@ -231,7 +120,13 @@ JOB DESCRIPTION: ${interviewData.jobDescriptionText}
         setShowChat(true);
       });
     }
-  }, [interviewData.resumeText]);
+  }, [
+    interviewData.resumeText,
+    interviewData.difficultyLevel,
+    interviewData.interviewType,
+    interviewData.jobDescriptionText,
+    isLoading
+  ]);
 
   return (
     <div className="max-w-4xl mx-auto p-6">

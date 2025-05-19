@@ -1,7 +1,7 @@
 import { JobType } from '@/utils/types';
 import { Badge } from './ui/badge';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
-import { CalendarIcon, MapPinIcon, BriefcaseIcon, ClockIcon, Edit, ExternalLink, Trash2 } from 'lucide-react';
+import { CalendarIcon, MapPinIcon, BriefcaseIcon, Edit} from 'lucide-react';
 import { Button } from './ui/button';
 import { formatDistanceToNow } from 'date-fns';
 import Link from 'next/link';

@@ -3,7 +3,7 @@
 import React, { FC, memo } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { Props, programmingLanguages } from '../types';
+import { Props } from '../types';
 
 export const generateRandomString = (length: number, lowercase = false) => {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXY3456789';
@@ -15,29 +15,6 @@ export const generateRandomString = (length: number, lowercase = false) => {
 };
 
 const CodeBlock: FC<Props> = memo(({ language, value }) => {
-  const downloadAsFile = () => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-    const fileExtension = programmingLanguages[language] || '.file';
-    const suggestedFileName = `file-${generateRandomString(3, true)}${fileExtension}`;
-    const fileName = window.prompt('Enter file name', suggestedFileName);
-
-    if (!fileName) {
-      return;
-    }
-
-    const blob = new Blob([value], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.download = fileName;
-    link.href = url;
-    link.style.display = 'none';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <div className="relative w-full font-sans codeblock bg-zinc-950">
@@ -69,5 +46,7 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
     </div>
   );
 });
+
+CodeBlock.displayName = 'CodeBlock';
 
 export default CodeBlock; 

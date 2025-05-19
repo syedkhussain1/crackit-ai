@@ -2,14 +2,14 @@ import { getSingleJobAction } from '@/utils/actions';
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import JobEditClient from './JobEditClient';
 
-interface EditJobPageProps {
-  params: { id: string };
+interface PageProps {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function EditJobPage({ params }: EditJobPageProps) {
-  // Await the params object itself
-  const resolvedParams = await Promise.resolve(params);
-  const id = resolvedParams.id;
+export default async function EditJobPage({ params, searchParams }: PageProps) {
+  const { id } = await params;
+  await searchParams; // Ensure searchParams is resolved
 
   const queryClient = new QueryClient();
   

@@ -4,7 +4,7 @@ import { openai } from '@ai-sdk/openai';
 // IMPORTANT! Set the runtime to edge
 export const runtime = 'edge';
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   // Extract the `prompt` from the body of the request
   const { messages } = await req.json();
 

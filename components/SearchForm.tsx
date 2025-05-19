@@ -23,7 +23,7 @@ function SearchContainer() {
   const pathname = usePathname();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let params = new URLSearchParams();
+    const params = new URLSearchParams();
 
     const formData = new FormData(e.currentTarget);
     const search = formData.get('search') as string;

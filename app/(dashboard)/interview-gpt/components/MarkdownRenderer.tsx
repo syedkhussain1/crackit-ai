@@ -12,7 +12,8 @@ const MarkdownRenderer: FC<MarkdownRendererProps> = (props) => {
     p({ children }) {
       return <p className="mb-2 last:mb-0">{children}</p>;
     },
-    code({ node, inline, className, children, ...props }: any) {
+    // @ts-expect-error - React Markdown types are complex
+    code({ inline, className, children, ...props }) {
       const childrenArray = React.Children.toArray(children);
       if (childrenArray.length > 0) {
         if (childrenArray[0] === "▍") {
